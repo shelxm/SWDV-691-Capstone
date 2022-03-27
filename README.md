@@ -1,4 +1,4 @@
-# capstone
+# SWDV 691 Capstone
 
 # My Project
 Food Trucks Nearby is an application that shows nearby food trucks and relevant information. Users will be able to view information for food trucks nearby, change their selection by city, and search for specific queries such as tacos. Additionally, users will be able to login or register to make use of a favorites feature for saving their favorite food trucks. Information provided will include the food truck name, hours, location, additional links, and mapping.
