@@ -3,6 +3,7 @@
 My Project
 Food Trucks Nearby is an application that shows nearby food trucks and relevant information. Users will be able to view information for food trucks nearby, change their selection by city, and search for specific queries such as tacos. Additionally, users will be able to login or register to make use of a favorites feature for saving their favorite food trucks. Information provided will include the food truck name, hours, location, additional links, and mapping.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Assignment Overview
 The goal of this project is for you to design, develop, test, and deploy your own web application. You will generate the idea for your application. You will design, and implement, its components (i.e., user interface, data model, database, service architecture), its development plan, and its deployment procedure. Demonstration of these abilities indicates your mastery of developing a software artifact.
