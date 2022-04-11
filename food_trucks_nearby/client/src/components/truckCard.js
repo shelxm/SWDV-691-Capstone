@@ -1,15 +1,13 @@
 import React from 'react';
 
-const TruckCard = (props) => {
-    const foodTruck = props.foodTruck;
-
+const TruckCard = ({obj}) => {
     return (
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="..."/>
+            <img src={obj.imgUrl}class="card-img-top" alt="..."/>
             <div class="card-body">
-                <h2>{foodTruck.name}</h2>
-                <h3>{foodTruck.location}</h3>
-                <h3>{foodTruck.hours}</h3>
+                <h2>{obj.name}</h2>
+                <h3>{obj.location}</h3>
+                <h3>{obj.hours}</h3>
             </div>
         </div>
     )

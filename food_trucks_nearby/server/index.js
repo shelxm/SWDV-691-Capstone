@@ -1,17 +1,23 @@
 import express from 'express';
-import bodyParser from 'body-Parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
 const app= express();
 
-import foodTruckRoutes from './routes/foodtrucks.js';
+import foodTruckRoutes from './routes/truckRoutes.js';
 
-app.use(bodyParser.json({extended: true}));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/foodtrucks', foodTruckRoutes);
+
+/*
+const path= require("path");
+app.use(express.static(path.join(__dirname, '../build')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build'))
+});*/
 
 const dbConnection =  'mongodb+srv://capstoneUser:(Letmein691)@cluster0.p8zn4.mongodb.net/foodTrucksNearbydb?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;

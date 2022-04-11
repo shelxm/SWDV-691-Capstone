@@ -11,7 +11,7 @@ class GenTruckList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000').then(res => {
+        axios.get('http://localhost:5000/foodtrucks').then(res => {
             this.setState({foodtrucks: res.data
             })
         })
