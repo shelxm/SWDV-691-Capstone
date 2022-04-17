@@ -1,8 +1,8 @@
 import axios from 'axios';
-const API = axios.create({baseUrl: "http://localhost:5000"});
+const API = "http://localhost:5000/user/";
 
 const register = async (userData) => {
-    const response = await API.post('http://localhost:5000/user/register', userData)
+    const response = await axios.post(API + 'register', userData)
 
     console.log(response.data);
     if (response.data) {
@@ -12,8 +12,23 @@ const register = async (userData) => {
     return response.data
 }
 
+const login = async (userData) => {
+    const response= await axios.post(API + 'login', userData)
+    console.log(response.data)
+    if (response.data) {
+        localStorage.setItem('user', JSON.stringify(response.data))
+    }
+    return response.data
+}
+
+const logout = () => {
+    localStorage.removeItem('user')
+  }
+
 const authService = {
-    register
+    register,
+    logout,
+    login
 }
 
 export default authService;

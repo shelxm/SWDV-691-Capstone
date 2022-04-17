@@ -40,7 +40,7 @@ class GenTruckList extends Component {
                     <div className="row">
                         <div className="col-md-12">
                         <br />
-                        <h2 className="display-4 text-center">Food Truck List</h2>
+                        <h2 className="display-4 text-center">Food Truck</h2>
                         </div>
                         <div className="list">
                             {foodTruckList}
