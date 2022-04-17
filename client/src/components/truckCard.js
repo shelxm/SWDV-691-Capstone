@@ -1,13 +1,14 @@
 import React from 'react';
 
-const TruckCard = ({obj}) => {
+const TruckCard = ({foodtruck}) => {
+    console.log(foodtruck);
     return (
-        <div class="card" style="width: 18rem;">
-            <img src={obj.imgUrl}class="card-img-top" alt="..."/>
-            <div class="card-body">
-                <h2>{obj.name}</h2>
-                <h3>{obj.location}</h3>
-                <h3>{obj.hours}</h3>
+        <div class="card mb-2">
+            <h5 className="card-header">{foodtruck.name}</h5>
+            <div className="card-body">
+                <h5 className="card-title">{foodtruck.location}</h5>
+                <p className="card-text">{foodtruck.hours}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
     )

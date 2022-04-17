@@ -11,6 +11,7 @@ class GenTruckList extends Component {
     }
 
     componentDidMount() {
+
         axios.get('http://localhost:5000/foodtrucks').then(res => {
             this.setState({foodtrucks: res.data
             })
@@ -24,12 +25,12 @@ class GenTruckList extends Component {
         const foodtrucks = this.state.foodtrucks;
         console.log("ListTruck: " + foodtrucks);
         let foodTruckList;
-
+        
         if (!foodtrucks) {
             foodTruckList = "No food trucks were found. Please try a different location."
         } else {
             foodTruckList = foodtrucks.map((foodtruck, k) =>
-                <TruckCard foodtruck= {foodtruck} key={k} />
+                <TruckCard foodtruck={foodtruck} key={k} />
             );
         }
 

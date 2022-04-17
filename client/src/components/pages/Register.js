@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import authService from '../redux/authService';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -18,36 +19,38 @@ const Register = () => {
         }))
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
         e.preventDefault();
+        console.log(name, email);
+        await authService.register({name, email, password, password2});
     }
 
     return (
-        <div class="container">
+        <div className="container">
             <h3 align="center">Register</h3>
             <p align="center">Please create an account</p>
             <form onSubmit = {onSubmit}>
-            <div class="form-outline mb-4">
-                <input type="text" id="registerName" class="form-control" name="name" value={name} placeholder='Enter your name' onChange={onChange}/>
-                <label class="form-label" for="registerName">Name</label>
+            <div className="form-outline mb-4">
+                <input type="text" id="registerName" className="form-control" name="name" value={name} placeholder='Enter your name' onChange={onChange}/>
+                <label className="form-label" for="registerName">Name</label>
             </div>
 
-            <div class="form-outline mb-4">
-                <input type="email" id="registerEmail" class="form-control" name="email" value={email} placeholder='Enter your email' onChange={onChange}/>
-                <label class="form-label" for="registerEmail">Email</label>
+            <div className="form-outline mb-4">
+                <input type="email" id="registerEmail" className="form-control" name="email" value={email} placeholder='Enter your email' onChange={onChange}/>
+                <label className="form-label" for="registerEmail">Email</label>
             </div>
 
-            <div class="form-outline mb-4">
-                <input type="password" id="registerPassword" class="form-control" name="password" value={password} placeholder='Enter a password' onChange={onChange}/>
-                <label class="form-label" for="registerPassword">Password</label>
+            <div className="form-outline mb-4">
+                <input type="password" id="registerPassword" className="form-control" name="password" value={password} placeholder='Enter a password' onChange={onChange}/>
+                <label className="form-label" for="registerPassword">Password</label>
             </div>
 
-            <div class="form-outline mb-4">
-                <input type="password" id="registerRepeatPassword" class="form-control" name="password2" value={password2} placeholder='Confirm password' onChange={onChange}/>
-                <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+            <div className="form-outline mb-4">
+                <input type="password" id="registerRepeatPassword" className="form-control" name="password2" value={password2} placeholder='Confirm password' onChange={onChange}/>
+                <label className="form-label" for="registerRepeatPassword">Repeat password</label>
             </div>
-            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-            <div class="text-center">
+            <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+            <div className="text-center">
                 <p>Already a member? <a href="/login">Login</a></p>
             </div>
             </form>

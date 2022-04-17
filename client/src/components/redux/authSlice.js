@@ -31,7 +31,16 @@ export const authSlice = createSlice({
             state.message= ''
         }
     },
-    extraReducers: () => {}
+    extraReducers: (builder) => {
+        builder
+            .addCase(register.pending, (state) => {
+                state.isLoading= true
+            })
+            .addCase(register.fulfilled, (state, action) => {
+                state.isLoading = false
+            })
+            .addCase()
+    }
 })
 
 export const { reset } = authSlice.actions

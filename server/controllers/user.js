@@ -5,7 +5,7 @@ import User from '../models/userModel.js';
 
 const router = express.Router()
 
-const secret="test";
+export const secret="test";
 
 export const getUsers = async (req, res) => {
     try {
@@ -38,6 +38,7 @@ export const loginUser = async (req, res, next) => {
 };
 
 export const registerUser = async (req,res) => {
+    console.log(JSON.stringify(req.body));
     const { name, email, password } = req.body;
     let existingUser;
     try {
@@ -56,6 +57,7 @@ export const registerUser = async (req,res) => {
     try {
         await user.save();
     } catch (err) {
+        console.error(err);
         return console.log('There was an error when registering. Please try again')
     }
     const token = jwt.sign({email: user.email, id: user._id}, secret, {expiresIn: 86400})
