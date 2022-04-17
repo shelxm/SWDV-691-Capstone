@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState} from 'react';
 import authService from '../redux/authService';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name:'',
         email: '',
@@ -19,10 +21,11 @@ const Register = () => {
         }))
     }
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(name, email);
         await authService.register({name, email, password, password2});
+        navigate('/login')
     }
 
     return (
@@ -51,7 +54,7 @@ const Register = () => {
             </div>
             <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
             <div className="text-center">
-                <p>Already a member? <a href="/login">Login</a></p>
+                <p>Already a member? <a href="/login">Register</a></p>
             </div>
             </form>
         </div>

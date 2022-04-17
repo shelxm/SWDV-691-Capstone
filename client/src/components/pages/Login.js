@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import authService from '../redux/authService';
+import { useNavigate } from 'react-router-dom';
 
 const initialState= {
     email:"",
     password:""
 }
 const Login = () => {
+    const navigate = useNavigate()
     const [formValue, setFormValue] = useState(initialState);
     const {email, password} = formValue;
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
+    
     const onInputChange = (e) => {
         let {name, value} = e.target;
         setFormValue({ ...formValue, [name]: value})
     };
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        console.log(email);
+        await authService.login({email, password}).then(navigate('/'))
+    }
+
     return (
         <div class="container">
             <h3 align="center">Sign In</h3>
             <p align="center">Please sign into your account</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={onSubmit}>
             <div class="form-outline mb-4">
                 <input type="email" id="form2Example1" class="form-control" name="email" value={email} onChange={onInputChange} placeholder="Enter your email"/>
                 <label class="form-label" for="form2Example1">Email address</label>
