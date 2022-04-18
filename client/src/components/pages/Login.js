@@ -19,7 +19,8 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
-        await authService.login({email, password}).then(navigate('/'))
+        await authService.login({email, password})
+        navigate('/')
     }
 
     return (
