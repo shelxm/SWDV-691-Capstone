@@ -21,13 +21,19 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-const path = require("path");
+__dirname= path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  })
+}
+  else {
+    app.get('/', (req, res) => {
+      res.send('API is running')
+    });
+  }
 
 mongoose.connect(process.env.dbConnection, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log('Connected to MongoDB!')))
