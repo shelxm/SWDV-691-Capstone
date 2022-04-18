@@ -19,17 +19,16 @@ app.get('/', (req, res) => {
     res.send('App is running')
 })
 
-const dbConnection =  'mongodb+srv://capstoneUser:(Letmein691)@cluster0.p8zn4.mongodb.net/foodTrucksNearbydb?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 const path = require("path");
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
-app.get("/", function (request, response) {
+app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
-mongoose.connect(dbConnection, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.dbConnection, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log('Connected to MongoDB!')))
     .catch((error) => console.log(error.message));
