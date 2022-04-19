@@ -2,8 +2,8 @@
 "scripts": {
     "start": "cd ./server/ && npm install && node server.js",
     "heroku-postbuild": "cd ./client/ && npm install && npm run build",
-    "backend": "cd ./server/ && nodemon server.js ",
-    "frontend": "cd ./client/ && yarn run start",
+    "backend": "cd ./server/ && node server.js ",
+    "frontend": "cd ./client/ && npm run start",
     "test":"cd ./client/ && npm run test"
   }
 }
