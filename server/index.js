@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-require('dotenv').config();
 
 const app= express();
 
@@ -21,7 +20,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-__dirname= path.resolve();
+/*__dirname= path.resolve();
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.resolve(__dirname, "./client/build")));
 
@@ -33,8 +32,8 @@ if (process.env.NODE_ENV === "production") {
     app.get('/', (req, res) => {
       res.send('API is running')
     });
-  }
+  }*/
 
-mongoose.connect(process.env.dbConnection, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect("mongodb+srv://capstoneUser:(Letmein691)@cluster0.p8zn4.mongodb.net/foodTrucksNearbydb?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log('Connected to MongoDB!')))
     .catch((error) => console.log(error.message));

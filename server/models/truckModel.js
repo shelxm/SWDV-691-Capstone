@@ -5,6 +5,10 @@ const truckSchema = new mongoose.Schema ({
         type: String,
         required: true,
     },
+    cityState: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true,
@@ -20,6 +24,10 @@ const truckSchema = new mongoose.Schema ({
     hours: {
         type: String,
         required: true,
+    },
+    link: {
+        type: String,
+        required: true
     },
     imgUrl: {
         type: String,

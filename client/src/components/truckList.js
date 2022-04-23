@@ -5,7 +5,8 @@ import TruckCard from './truckCard';
 
 class GenTruckList extends Component {
     constructor(props) {
-        super(props);this.state = {
+        super(props);
+        this.state = {
             foodtrucks: []
         };
     }
