@@ -19,7 +19,7 @@ const login = async (userData) => {
 
 
 const logout = () => {
-    localStorage.clear()
+    localStorage.clear("user")
     window.location.reload(false)
   }
 
