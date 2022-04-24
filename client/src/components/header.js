@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavDropdown } from 'bootstrap';
+import authService from './redux/authService';
 
 const Header = () => {
-  return (
+    const [isLoggedIn, setLogin] = useState()
+    
+    useEffect(() => {
+        if (window.localStorage.getItem("user") !== null) {
+        setLogin(true);
+        } else {
+          setLogin(false);
+        }
+      }, [isLoggedIn]);
+    
+      console.log(isLoggedIn);
+
+    return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
@@ -23,8 +36,8 @@ const Header = () => {
                         </ul>
                     </div>
                     <a className="navbar-brand fw-bolder fs-4 mx-auto" href="/">Food Trucks Nearby</a>
-                    <a href="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill" role="button">Login</a>
-                    <a href="/register" className="btn btn-outline-primary ms-auto px-4 rounded-pill" role="button">Register</a>
+                    { !isLoggedIn ? (
+                            <div><a href="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill" role="button">Login</a><a href="/register" className="btn btn-outline-primary ms-auto px-4 rounded-pill" role="button">Register</a></div>) : (<div><a href="/" className="btn btn-outline-primary ms-auto px-4 rounded-pill" role="button" onClick={authService.logout}>Logout</a></div>)}
                 </div>
             </nav>
         </div>

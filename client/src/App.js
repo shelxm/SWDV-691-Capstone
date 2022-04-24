@@ -12,17 +12,12 @@ import FoodTrucksPage from './components/FoodTrucksPage.js';
 
 
 export default function App() {
-  const [user, setLoginUser] = useState({})
-
-  useEffect(() => {
-    setLoginUser(JSON.parse(localStorage.getItem("user")))
-  }, [])
     return (
       <BrowserRouter>
         <Header/>
         <Routes>
           <Route path='/' element={<Home/>}></Route>
-          <Route path='/login' element={<Login/>} setLoginUser={setLoginUser}></Route>
+          <Route path='/login' element={<Login/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/foodtrucks' element={<FoodTrucks/>}></Route>
           <Route path='/about' element={<About/>}></Route>

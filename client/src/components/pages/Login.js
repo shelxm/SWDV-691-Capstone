@@ -21,6 +21,7 @@ const Login = () => {
         console.log(email);
         await authService.login({email, password})
         navigate('/')
+        window.location.reload()
     }
 
     return (
