@@ -11,7 +11,7 @@ const FoodTrucks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/foodtrucks")
+      .get("https://ftnearby.herokuapp.com/foodtrucks")
       .then((res) => {
         setFoodTrucks(res.data);
         setFilteredTrucks(res.data);
