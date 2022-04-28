@@ -17,7 +17,7 @@ const Header = () => {
   console.log(isLoggedIn);
 
   return (
-    <div>
+    <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <button
@@ -44,42 +44,42 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">
+                <Link className="nav-link" to="/about">
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
-          <a className="navbar-brand fw-bolder fs-4 mx-auto" href="/">
+          <Link className="navbar-brand fw-bolder fs-4 mx-auto" to="/">
             Food Trucks Nearby
-          </a>
+          </Link>
           {!isLoggedIn ? (
             <div>
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="btn btn-outline-primary ms-auto px-4 rounded-pill"
                 role="button"
               >
                 Login
-              </a>
-              <a
-                href="/register"
+              </Link>
+              <Link
+                to="/register"
                 className="btn btn-outline-primary ms-auto px-4 rounded-pill"
                 role="button"
               >
                 Register
-              </a>
+              </Link>
             </div>
           ) : (
             <div>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="btn btn-outline-primary ms-auto px-4 rounded-pill"
                 role="button"
                 onClick={authService.logout}
               >
                 Logout
-              </a>
+              </Link>
             </div>
           )}
         </div>

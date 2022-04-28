@@ -15,7 +15,7 @@ const Home = () => {
   console.log(isLoggedIn);
 
   return (
-    <div class="container">
+    <div className="container">
       <p>Welcome to the home page</p>
       <br />
       <br />

@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <h3 align="center">Sign In</h3>
       <p align="center">Please sign into your account</p>
       <form onSubmit={onSubmit}>

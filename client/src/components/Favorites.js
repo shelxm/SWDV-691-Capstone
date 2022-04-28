@@ -10,7 +10,7 @@ const Favorites = () => {
     const user = JSON.parse(window.localStorage.getItem("user"));
     const token = user.token;
     axios
-      .get("http://localhost:5000/user/favorites", {
+      .get("https://ftnearby.herokuapp.com/user/favorites", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -24,7 +24,7 @@ const Favorites = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <GenTruckList foodTrucks={favoritedTrucks} />
     </div>
   );

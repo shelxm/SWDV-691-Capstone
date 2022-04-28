@@ -21,16 +21,19 @@ export const getUsers = async (req, res) => {
 export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
   let existingUser;
+  //verify user exists
   try {
     existingUser = await User.findOne({ email });
   } catch (err) {
     return console.log(err);
   }
+  //response if user does not exist
   if (!existingUser) {
     return res.status(400).json({
       message: "No user found. Please try again or register for an account",
     });
   }
+  //authenticate password against database
   let testPassword = password;
   if (testPassword != existingUser.password) {
     return res.status(400).json({
@@ -107,6 +110,32 @@ export const getFavorites = async (req, res) => {
       });
     });
   });
+
+  /*export const addFavorite = async (req, res) => {
+    //get jwt token from header
+    // header Authorization: Bearer <token>
+    const token = req.headers.authorization.split(" ")[1];
+    //verify token
+    jwt.verify(token, secret, (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ message: "Unauthorized request" });
+      }
+      //get user id from decoded token
+      const userId = decoded.id;
+      //find user by id
+      User.findById(userId, (err, user) => {
+        if (err) {
+          return res.status(400).json({ message: "Error. Could not find user" });
+        }
+        //return user favorites
+        const favoriteIds = user.favorites;
+        Truck.find({ _id: { $in: favoriteIds } }, (err, truck) => {
+          if (truck) {
+              user.favorites.push
+          }
+        });
+      });
+    });*/
 
   //use user id to retrieve user or just user favorites
   //return user favorites
