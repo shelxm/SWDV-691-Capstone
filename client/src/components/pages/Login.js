@@ -39,7 +39,7 @@ const Login = () => {
             onChange={onInputChange}
             placeholder="Enter your email"
           />
-          <label class="form-label" for="form2Example1">
+          <label class="form-label" htmlFor="form2Example1">
             Email address
           </label>
         </div>
@@ -54,7 +54,7 @@ const Login = () => {
             onChange={onInputChange}
             placeholder="Enter your password"
           />
-          <label class="form-label" for="form2Example2">
+          <label class="form-label" htmlFor="form2Example2">
             Password
           </label>
         </div>

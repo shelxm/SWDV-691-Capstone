@@ -43,7 +43,7 @@ const Register = () => {
             placeholder="Enter your name"
             onChange={onChange}
           />
-          <label className="form-label" for="registerName">
+          <label className="form-label" htmlFor="registerName">
             Name
           </label>
         </div>
@@ -58,7 +58,7 @@ const Register = () => {
             placeholder="Enter your email"
             onChange={onChange}
           />
-          <label className="form-label" for="registerEmail">
+          <label className="form-label" htmlFor="registerEmail">
             Email
           </label>
         </div>
@@ -73,7 +73,7 @@ const Register = () => {
             placeholder="Enter a password"
             onChange={onChange}
           />
-          <label className="form-label" for="registerPassword">
+          <label className="form-label" htmlFor="registerPassword">
             Password
           </label>
         </div>
@@ -88,7 +88,7 @@ const Register = () => {
             placeholder="Confirm password"
             onChange={onChange}
           />
-          <label className="form-label" for="registerRepeatPassword">
+          <label className="form-label" htmlFor="registerRepeatPassword">
             Repeat password
           </label>
         </div>

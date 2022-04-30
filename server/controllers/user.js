@@ -8,6 +8,7 @@ const router = express.Router();
 
 export const secret = "test";
 
+//Retrieve all users
 export const getUsers = async (req, res) => {
   try {
     const user = await User.find();
@@ -41,6 +42,7 @@ export const loginUser = async (req, res, next) => {
         "Incorrect password. Please try again or register for an account",
     });
   }
+  //generate token
   const token = jwt.sign(
     { email: existingUser.email, id: existingUser._id },
     secret,
@@ -54,6 +56,7 @@ export const loginUser = async (req, res, next) => {
   });
 };
 
+//Register new user
 export const registerUser = async (req, res) => {
   console.log(JSON.stringify(req.body));
   const { name, email, password } = req.body;
@@ -85,8 +88,6 @@ export const registerUser = async (req, res) => {
   return res.status(201).json({ user, token });
 };
 
-export const logoutUser = (req, res) => {};
-
 export const getFavorites = async (req, res) => {
   //get jwt token from header
   // header Authorization: Bearer <token>
@@ -110,8 +111,9 @@ export const getFavorites = async (req, res) => {
       });
     });
   });
+};
 
-  /*export const addFavorite = async (req, res) => {
+export const addFavorite = async (req, res) => {
     //get jwt token from header
     // header Authorization: Bearer <token>
     const token = req.headers.authorization.split(" ")[1];
@@ -130,13 +132,13 @@ export const getFavorites = async (req, res) => {
         //return user favorites
         const favoriteIds = user.favorites;
         Truck.find({ _id: { $in: favoriteIds } }, (err, truck) => {
-          if (truck) {
+          if (!truck) {
               user.favorites.push
           }
         });
       });
-    });*/
-
+    });
+  
   //use user id to retrieve user or just user favorites
   //return user favorites
 };
@@ -155,5 +157,14 @@ export const getFavorites = async (req, res) => {
 //     user.favorites.slice(user.favorites.indexOf(truckId),1);
 //     user.save();
 //   });
+/*
+API adds to favorites list
+API removes from favorites list
+
+Add check logic in API or client side?
+
+Use isFavorited state (useState?), default false
+on click, if false change to true and add, if true change to false and remove
+*/
 
 export default router;

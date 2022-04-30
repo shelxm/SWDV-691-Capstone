@@ -24,40 +24,7 @@ export const addTruck = async (req, res) => {
         return res.status(500).json({message: 'The food truck could not be added'});
     }
 }
-//Adds new food truck
-/*export const addTruck = async (req, res, next) => {
-    const { name, location, longitude, latitude, hours, imgUrl, tags} = req.body;
-    let truck;
-    try {
-        truck= new Truck ({
-            name,
-            location,
-            longitude,
-            latitude,
-            hours,
-            imgUrl,
-            tags
-        });
-        await Truck.save();
-    } catch (err) {
-        console.log(err)
-    }
 
-    if (!truck) {
-        return res.status(500).json({message: 'Unable to add the food truck.'});
-    }
-    return res.status(201).json ({ truck });
-};*/
-
-/* Alt add food truck
-export const addTruck = async (req, res, next) => {
-    const newTruck = await Truck.create(req.body);
-    res.status(201).json({
-        success: true,
-        newTruck
-    })
-};
-*/
 // Retrives specific food truck object by id
 export const getById = async (req, res) => {
     const id = req.params.id;
