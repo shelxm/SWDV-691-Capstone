@@ -130,41 +130,33 @@ export const addFavorite = async (req, res) => {
           return res.status(400).json({ message: "Error. Could not find user" });
         }
         //return user favorites
-        const favoriteIds = user.favorites;
-        Truck.find({ _id: { $in: favoriteIds } }, (err, truck) => {
-          if (!truck) {
-              user.favorites.push
-          }
+        const truckId=req.body.truckId;
+        user.favorites.push(truckId)
+        user.save();
         });
       });
-    });
-  
-  //use user id to retrieve user or just user favorites
-  //return user favorites
-};
+    };
 
-// httpPost
-//{truckId}
-// Truck.findById(req.body.truckId)
-
-// User.findById(userId, (err, user) => {
-//     if (err) {
-//       return res.status(400).json({ message: "Error. Could not find user" });
-//     }
-//     //return user favorites
-//     user.favorites.push(truckId);;
-//     for removing
-//     user.favorites.slice(user.favorites.indexOf(truckId),1);
-//     user.save();
-//   });
-/*
-API adds to favorites list
-API removes from favorites list
-
-Add check logic in API or client side?
-
-Use isFavorited state (useState?), default false
-on click, if false change to true and add, if true change to false and remove
-*/
+    export const removeFavorite = async (req, res) => {
+      //get jwt token from header
+      // header Authorization: Bearer <token>
+      const token = req.headers.authorization.split(" ")[1];
+      //verify token
+      jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+          return res.status(401).json({ message: "Unauthorized request" });
+        }
+        //get user id from decoded token
+        const userId = decoded.id;
+        //find user by id
+        User.updateOne({ _id: userId }, {
+          $pullAll: {
+              favorites: [req.params.truckId],
+            },
+        }, null, (err, user) => { 
+         if (err) {return res.status(500).json({message:err});}
+        });
+      });
+      };
 
 export default router;

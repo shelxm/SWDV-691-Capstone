@@ -1,4 +1,5 @@
 import React from "react";
+import FavoriteIcon from './FavoriteIcon';
 
 const TruckCard = ({ foodtruck }) => {
   //console.log(foodtruck);
