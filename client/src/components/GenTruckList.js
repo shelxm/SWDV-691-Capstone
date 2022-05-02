@@ -1,9 +1,8 @@
 import React from "react";
 import TruckCard from "./truckCard";
 
-function GenTruckList(props) {
-  console.log(props);
-  const foodtrucks = props.foodTrucks;
+function GenTruckList({foodTrucks, onUpdated}) {
+  const foodtrucks = foodTrucks;
   console.log("ListTruck: " + foodtrucks);
   let foodTruckList;
 
@@ -12,7 +11,9 @@ function GenTruckList(props) {
       "No food trucks were found. Please try a different location.";
   } else {
     foodTruckList = foodtrucks.map((foodtruck, k) => (
-      <TruckCard foodtruck={foodtruck} key={k} />
+      <div className="col-4 mb-2">
+        <TruckCard foodtruck={foodtruck} key={k} onUpdated={onUpdated} />
+      </div>
     ));
   }
 
@@ -20,11 +21,11 @@ function GenTruckList(props) {
     <div className="GenTruckList">
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 d-flex align-items-stretch">
             <br />
-            <h2 className="display-4 text-center">Food Truck</h2>
+            <h3 className="display-4 text-center">Food Trucks</h3>
           </div>
-          <div className="list">{foodTruckList}</div>
+          <div className="row">{foodTruckList}</div>
         </div>
       </div>
     </div>

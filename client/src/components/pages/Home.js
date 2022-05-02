@@ -19,7 +19,7 @@ const Home = () => {
       <p>Welcome to the home page</p>
       <br />
       <br />
-      <h3>Favorites</h3>
+      <h3 className="text-center">Favorites</h3>
       {isLoggedIn ? <Favorites /> : <p>Please login to use favorites</p>}
     </div>
   );
