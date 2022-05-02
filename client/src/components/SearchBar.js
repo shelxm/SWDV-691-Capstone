@@ -17,21 +17,21 @@ const SearchBar = (props) => {
   }
 
   return (
-    <div className="container">
-      <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
+    <div className="container mb-2">
+      <form className="form-inline my-2 my-lg-0 " onSubmit={handleSearch}>
         <input
-          class="form-control mr-sm-2"
+          className="form-control mr-sm-2 mb-2"
           type="search"
           value={query}
           placeholder="Search"
           aria-label="Search"
           onChange={handleChange}
         />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
         <button
-          class="btn btn-outline-danger my-2 my-sm-0"
+          className="btn btn-outline-danger my-2 my-sm-0"
           type="button"
           onClick={handleReset}
         >

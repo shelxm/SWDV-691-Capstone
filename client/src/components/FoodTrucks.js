@@ -13,20 +13,22 @@ const FoodTrucks = () => {
 
   async function loadFoodTrucks() {
     const res = await axios.get(API + "foodtrucks");
+    console.log(res.data);
     
     const user = JSON.parse(window.localStorage.getItem("user"));
-    const token = user.token;
-    const favorites = await axios.get(API + "user/favorites/", {
+    if(user) {
+      const token = user.token;
+      const favorites = await axios.get(API + "user/favorites/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-    res.data.forEach((truck) => {
+      res.data.forEach((truck) => {
       truck.isFavorite= favorites.data.some(favorite => favorite._id === truck._id)
         
-    });
-    
+      });
+    }
     setFoodTrucks(res.data);
     setFilteredTrucks(res.data);
     setSearchedTrucks(res.data);

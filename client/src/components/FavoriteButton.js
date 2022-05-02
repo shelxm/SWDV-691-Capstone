@@ -6,9 +6,9 @@ const FavoriteButton = ({foodTruck, onUpdated}) => {
     const [token, setToken] = useState();
     useEffect(() =>{
         const user = JSON.parse(window.localStorage.getItem("user"));
-        setToken(user.token);
+        if(user) {
+        setToken(user.token);}
     }, []);
-
     async function handleOnFavorite() {
         console.log('I am the favorite function')
         await axios.post(API + "user/favorites/", { truckId: foodTruck._id}, {headers: {

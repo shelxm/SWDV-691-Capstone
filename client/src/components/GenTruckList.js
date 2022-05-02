@@ -11,7 +11,7 @@ function GenTruckList({foodTrucks, onUpdated}) {
       "No food trucks were found. Please try a different location.";
   } else {
     foodTruckList = foodtrucks.map((foodtruck, k) => (
-      <div className="col-4 mb-2">
+      <div className="col-12 col-md-6 col-lg-4 mb-2">
         <TruckCard foodtruck={foodtruck} key={k} onUpdated={onUpdated} />
       </div>
     ));
@@ -21,9 +21,10 @@ function GenTruckList({foodTrucks, onUpdated}) {
     <div className="GenTruckList">
       <div className="container">
         <div className="row">
-          <div className="col-md-12 d-flex align-items-stretch">
+          <div className="col-md-12">
             <br />
             <h3 className="display-4 text-center">Food Trucks</h3>
+            <p>*Hours and locations are subject to change. Please check ahead of time.</p>
           </div>
           <div className="row">{foodTruckList}</div>
         </div>
