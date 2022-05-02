@@ -3,3 +3,11 @@
     height: 15vw;
     object-fit: cover;
 }
+
+.truckBody {
+    background-color: #F7E8A1 ;
+}
+
+.card {
+    background-color: #FBFBDA;
+}

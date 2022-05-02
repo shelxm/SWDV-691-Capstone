@@ -19,7 +19,7 @@ function GenTruckList({foodTrucks, onUpdated}) {
 
   return (
     <div className="GenTruckList">
-      <div className="container">
+      <div className="container truckBody">
         <div className="row">
           <div className="col-md-12">
             <br />

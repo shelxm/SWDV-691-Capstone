@@ -70,7 +70,7 @@ const FoodTrucks = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container truckBody">
       <p>Welcome to the food truck page</p>
       <Filter onFilterChange={onFilterChange} />
       <SearchBar onSearch={onSearch} />
